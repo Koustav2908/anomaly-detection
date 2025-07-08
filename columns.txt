@@ -1,0 +1,11 @@
+duration
+protocol_type
+service
+src_bytes
+dst_bytes
+logged_in
+count
+srv_count
+dst_host_count
+dst_host_srv_count
+label
