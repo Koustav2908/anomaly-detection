@@ -1,5 +1,10 @@
+flask
+flask-wtf
+flask-bootstrap
+joblib
 matplotlib
+numpy
 pandas
 seaborn
+tensorflow
 scikit-learn
-joblib
