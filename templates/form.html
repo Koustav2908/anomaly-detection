@@ -1,0 +1,196 @@
+{% extends "base.html" %} {% from 'bootstrap5/form.html' import render_form %}
+{% block herotitle %} Fill up the details {% endblock %}
+<!---->
+{% block content %}
+<main>
+    <div class="container mb-5">
+        <form method="POST" action="{{ url_for('check') }}" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.duration.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.duration.description }}
+                    </div>
+                    {{ form.data.duration(class_="form-control") }}
+                    <!---->
+                    {% if form.data.duration.errors %}
+                    <div class="text-danger">
+                        {% for error in form.data.duration.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.protocol_type.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.protocol_type.description }}
+                    </div>
+                    {{ form.data.protocol_type(class_="form-control") }}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.service.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.service.description }}
+                    </div>
+                    {{ form.data.service(class_="form-control") }}
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.src_bytes.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.src_bytes.description }}
+                    </div>
+                    {{ form.data.src_bytes(class_="form-control") }}
+                    <!---->
+                    {% if form.data.src_bytes.errors %}
+                    <div class="text-danger">
+                        {% for error in form.data.src_bytes.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.dst_bytes.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.dst_bytes.description }}
+                    </div>
+                    {{ form.data.dst_bytes(class_="form-control") }}
+                    <!---->
+                    {% if form.data.dst_bytes.errors %}
+                    <div class="text-danger">
+                        {% for error in form.data.dst_bytes.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.logged_in.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.logged_in.description }}
+                    </div>
+                    {{ form.data.logged_in(class_="form-control") }}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.count.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.count.description }}
+                    </div>
+                    {{ form.data.count(class_="form-control") }}
+                    <!---->
+                    {% if form.data.count.errors %}
+                    <div class="text-danger">
+                        {% for error in form.data.count.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.srv_count.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.srv_count.description }}
+                    </div>
+                    {{ form.data.srv_count(class_="form-control") }}
+                    <!---->
+                    {% if form.data.srv_count.errors %}
+                    <div class="text-danger">
+                        {% for error in form.data.srv_count.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.dst_host_count.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.dst_host_count.description }}
+                    </div>
+                    {{ form.data.dst_host_count(class_="form-control") }}
+                    <!---->
+                    {% if form.data.dst_host_count.errors %}
+                    <div class="text-danger">
+                        {% for error in form.data.dst_host_count.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-color">
+                        {{ form.data.dst_host_srv_count.label }}
+                    </label>
+                    <div class="form-text mb-2">
+                        {{ form.data.dst_host_srv_count.description }}
+                    </div>
+                    {{ form.data.dst_host_srv_count(class_="form-control") }}
+                    <!---->
+                    {% if form.data.dst_host_srv_count.errors %}
+                    <div class="text-danger">
+                        {% for error in form.data.dst_host_srv_count.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label class="form-label text-color">
+                        {{ form.model.label }}
+                    </label>
+                    {{ form.model(class_="form-control") }}
+                    <!---->
+                    {% if form.model.errors %}
+                    <div class="text-danger">
+                        {% for error in form.model.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-custom px-5 py-2">
+                    {{ form.submit.label.text }}
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

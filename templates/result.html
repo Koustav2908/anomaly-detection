@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+<!---->
+{% block herotitle %} Prediction Result {% endblock %}
+<!---->
+{% block content %}
+<main>
+    <div class="container mt-5">
+        <div class="card shadow rounded-4 p-4 text-center">
+            <h2 class="mb-4 text-color">
+                {% if result == 1 %}
+                <p><i class="fa-solid fa-bug"></i> Anomaly Detected</p>
+                {% else %}
+                <p><i class="fa-solid fa-square-check"></i> Normal Activity</p>
+                {% endif %}
+            </h2>
+            <p class="lead">
+                Based on your input, the {{ model_name }} model has predicted
+                the above result.
+            </p>
+            <a
+                href="{{ url_for('check') }}"
+                class="btn btn-primary btn-custom mt-4 px-4"
+                >Check Another</a
+            >
+        </div>
+    </div>
+</main>
+{% endblock %}

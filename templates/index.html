@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+<!---->
+{% block herotitle %} Anomaly Detection {% endblock %}
+<!---->
+{% block herosubtitle %}
+<!---->
+Introduction to anomaly detection in network traffic data using unsupervised
+learning techniques like Isolation Forest and Autoencoders.
+<!---->
+{% endblock %}
+<!---->
+
+{% block content %}
+<main>
+    <!-- Introduction -->
+    <div class="container mb-5">
+        <h2 class="fw-bold text-color mb-3">Introduction</h2>
+        <p class="text-dark">
+            In today's world, many devices are vulnerable to hackers due to
+            little to no security. This is where
+            <b>intrusion detection</b> becomes essential. It helps classify
+            whether a user's activity is normal or suspicious, based on known
+            behavior patterns. <br /><br />
+            To solve this, we built two models trained on the
+            <a
+                href="https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data"
+                target="_blank"
+            >
+                KDD Cup 1999 Dataset </a
+            >. These models use unsupervised learning techniques because hackers
+            are learning new ways to surpass the security systems. The idea of
+            the models are to learn what <b>normal</b> behavior looks like and
+            flag anything as malicious that doesn't follow normal behaviour.
+        </p>
+    </div>
+
+    <!-- Algorithms Section -->
+    <div class="container mb-5">
+        <h2 class="fw-bold text-color mb-4">Algorithms Used</h2>
+
+        <!-- Isolation Forest -->
+        <div class="card shadow-sm mb-4 border-0">
+            <div class="card-body">
+                <h4 class="card-title text-color">Isolation Forest</h4>
+                <ul>
+                    <li>
+                        Isolation Forest is an efficient and simple algorithm
+                        used for anomaly detection.
+                    </li>
+                    <li>
+                        It identifies outliers in large datasets by isolating
+                        them through binary partitioning.
+                    </li>
+                    <li>
+                        Outliers are easier to isolate and given higher anomaly
+                        scores.
+                    </li>
+                    <li>
+                        There are three main features of this model:
+                        <ol>
+                            <li>
+                                <b>Isolation:</b> This algorithm isolates the
+                                anomalies by focusing on their differences from
+                                normal data points.
+                            </li>
+                            <li>
+                                <b>Partitioning:</b> Data is split by randomly
+                                selecting features and using random values to
+                                partition the data.
+                            </li>
+                            <li>
+                                <b>Anomaly Score:</b> It measures how easily a
+                                data point can be isolated. Points that require
+                                fewer splits to isolate are considered anomalies
+                                and assigned higher scores.
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Autoencoders -->
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h4 class="card-title text-color">Autoencoders</h4>
+                <ul>
+                    <li>
+                        Autoencoders are a type of neural networks that learn to
+                        compress data into a compact form and then reconstruct
+                        it to closely match the original input.
+                    </li>
+                    <li>
+                        They consist of:
+                        <ol>
+                            <li>
+                                <b>Encoder:</b> They capture important features
+                                by reducing dimensionality.
+                            </li>
+                            <li>
+                                <b>Bottleneck:</b> It is the smallest layer
+                                which represents the most compressed version of
+                                the input data.
+                            </li>
+                            <li>
+                                <b>Decoder:</b> They rebuild the data from this
+                                compressed representation.
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        The model trains by minimizing reconstruction error
+                        using loss function: <b>Mean Squared Error</b>.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="container mb-5">
+        <h2 class="fw-bold text-color mb-4">Results</h2>
+
+        <!-- Isolation Forest Results -->
+        <div class="card shadow-sm mb-4 border-0">
+            <div class="card-body">
+                <h4 class="card-title text-color">Isolation Forest</h4>
+                <p>Accuracy: <b>91%</b></p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-light text-center">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th>Class</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>F1-score</th>
+                                <th>Support</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0 (Normal)</td>
+                                <td>0.72</td>
+                                <td>0.92</td>
+                                <td>0.81</td>
+                                <td>60,593</td>
+                            </tr>
+                            <tr>
+                                <td>1 (Anomaly)</td>
+                                <td>0.98</td>
+                                <td>0.91</td>
+                                <td>0.94</td>
+                                <td>250,436</td>
+                            </tr>
+                            <tr class="table-secondary fw-bold">
+                                <td colspan="4">Accuracy</td>
+                                <td>91%</td>
+                            </tr>
+                            <tr>
+                                <td><b>Macro Avg</b></td>
+                                <td>0.85</td>
+                                <td>0.92</td>
+                                <td>0.88</td>
+                                <td>311,029</td>
+                            </tr>
+                            <tr>
+                                <td><b>Weighted Avg</b></td>
+                                <td>0.93</td>
+                                <td>0.91</td>
+                                <td>0.92</td>
+                                <td>311,029</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Autoencoders Results -->
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h4 class="card-title text-color">Autoencoders</h4>
+                <p>Accuracy: <b>96%</b></p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-light text-center">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th>Class</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>F1-score</th>
+                                <th>Support</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0 (Normal)</td>
+                                <td>0.85</td>
+                                <td>0.95</td>
+                                <td>0.90</td>
+                                <td>60,593</td>
+                            </tr>
+                            <tr>
+                                <td>1 (Anomaly)</td>
+                                <td>0.99</td>
+                                <td>0.96</td>
+                                <td>0.97</td>
+                                <td>250,436</td>
+                            </tr>
+                            <tr class="table-secondary fw-bold">
+                                <td colspan="4">Accuracy</td>
+                                <td>96%</td>
+                            </tr>
+                            <tr>
+                                <td><b>Macro Avg</b></td>
+                                <td>0.92</td>
+                                <td>0.95</td>
+                                <td>0.93</td>
+                                <td>311,029</td>
+                            </tr>
+                            <tr>
+                                <td><b>Weighted Avg</b></td>
+                                <td>0.96</td>
+                                <td>0.96</td>
+                                <td>0.96</td>
+                                <td>311,029</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Charts Section -->
+        <div class="card shadow-sm border-0 my-4">
+            <div class="card-body text-center">
+                <h4 class="card-title text-color mb-4">Visual Comparisons</h4>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6 mb-4">
+                        <h6 class="text-color">
+                            Confusion Matrix: Isolation Forest
+                        </h6>
+                        <img
+                            src="{{ url_for('static', filename='images/cm_iso.png') }}"
+                            alt="Isolation Forest Confusion Matrix"
+                            class="img-fluid rounded"
+                        />
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h6 class="text-color">
+                            Confusion Matrix: Autoencoder
+                        </h6>
+                        <img
+                            src="{{ url_for('static', filename='images/cm_auto.png') }}"
+                            alt="Autoencoder Confusion Matrix"
+                            class="img-fluid rounded"
+                        />
+                    </div>
+                    <div class="col-md-8">
+                        <h6 class="text-color">
+                            Model vs Actual Class Distribution
+                        </h6>
+                        <img
+                            src="{{ url_for('static', filename='images/actual_vs_predicted.png') }}"
+                            alt="Model vs Actual Bar Chart"
+                            class="img-fluid rounded"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Summary -->
+    <div class="container mb-5">
+        <h2 class="fw-bold text-color mb-3">Model Comparison Summary</h2>
+        <p class="text-dark">
+            Both models performed well, but <b>Autoencoder</b> outperformed
+            Isolation Forest with an overall accuracy of <b>96%</b> compared to
+            <b>91%</b>. It also had a better balance between precision and
+            recall across both classes. However, Isolation Forest still performs
+            strongly and is often preferred when model simplicity and training
+            speed are priorities.
+        </p>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="container my-5 text-center">
+        <h2 class="mb-3 text-color fw-bold">
+            Check if your network data is normal or malicious
+        </h2>
+        <a href="{{ url_for('check') }}" class="btn btn-lg btn-custom">
+            Check Now
+        </a>
+    </div>
+</main>
+{% endblock %}
