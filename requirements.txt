@@ -1,6 +1,7 @@
 flask
 flask-wtf
 flask-bootstrap
+gunicorn
 joblib
 matplotlib
 numpy
