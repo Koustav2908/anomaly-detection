@@ -1,25 +1,19 @@
 from flask_wtf import FlaskForm
 from wtforms import FormField, IntegerField, SelectField, SubmitField
-from wtforms.validators import DataRequired, NumberRange
+from wtforms.validators import DataRequired, InputRequired, NumberRange
 
 from descriptions import features
 
 
-class ModelForm(FlaskForm):
-    model = SelectField(
-        label="Select the Model",
-        choices=[(0, "Isolation Forest"), (1, "AutoEncoder")],
-        coerce=int,
-        validators=[DataRequired()],
-    )
-
-
 class DataForm(FlaskForm):
+    class Meta:
+        csrf = -False
+
     duration = IntegerField(
         label=features[0][0],
         description=features[0][1],
         validators=[
-            DataRequired(),
+            InputRequired(),
             NumberRange(min=0, max=10_000, message=features[0][2]),
         ],
     )
@@ -116,7 +110,7 @@ class DataForm(FlaskForm):
         label=features[3][0],
         description=features[3][1],
         validators=[
-            DataRequired(),
+            InputRequired(),
             NumberRange(min=0, max=1_500_000, message=features[3][2]),
         ],
     )
@@ -125,7 +119,7 @@ class DataForm(FlaskForm):
         label=features[4][0],
         description=features[4][1],
         validators=[
-            DataRequired(),
+            InputRequired(),
             NumberRange(min=0, max=1_500_000, message=features[4][2]),
         ],
     )
@@ -142,7 +136,7 @@ class DataForm(FlaskForm):
         label=features[6][0],
         description=features[6][1],
         validators=[
-            DataRequired(),
+            InputRequired(),
             NumberRange(min=0, max=511, message=features[6][2]),
         ],
     )
@@ -151,7 +145,7 @@ class DataForm(FlaskForm):
         label=features[7][0],
         description=features[7][1],
         validators=[
-            DataRequired(),
+            InputRequired(),
             NumberRange(min=0, max=511, message=features[7][2]),
         ],
     )
@@ -160,7 +154,7 @@ class DataForm(FlaskForm):
         label=features[8][0],
         description=features[8][1],
         validators=[
-            DataRequired(),
+            InputRequired(),
             NumberRange(min=0, max=255, message=features[8][2]),
         ],
     )
@@ -169,14 +163,22 @@ class DataForm(FlaskForm):
         label=features[9][0],
         description=features[9][1],
         validators=[
-            DataRequired(),
+            InputRequired(),
             NumberRange(min=0, max=255, message=features[9][2]),
         ],
     )
 
 
 class Form(FlaskForm):
-    model = FormField(ModelForm)
+    model = SelectField(
+        label="Select the Model",
+        choices=[
+            ("isolation_forest", "Isolation Forest"),
+            ("autoencoder", "AutoEncoder"),
+        ],
+        validators=[DataRequired()],
+    )
+
     data = FormField(DataForm)
 
     submit = SubmitField(label="Predict")
