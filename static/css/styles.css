@@ -1,0 +1,63 @@
+body {
+    background-color: #d1dcd4;
+    font-family: "Open Sans", sans-serif;
+}
+
+.bg-color {
+    background-color: #707070;
+}
+
+.heading-color {
+    color: #bedbbb;
+}
+
+.description-color {
+    color: #d1dcd4;
+}
+
+.text-color {
+    color: #92817a;
+}
+
+.navbar-brand {
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #bedbbb;
+}
+
+.btn-custom {
+    background-color: #92817a;
+    color: #d1dcd4;
+    border: 2px solid #92817a;
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #d1dcd4;
+    color: #92817a;
+    border: 2px solid #92817a;
+}
+
+.shadow-sm {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card {
+    background-color: #e6e6e6;
+    border-radius: 12px;
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+.img-custom {
+    max-height: 200px;
+}
