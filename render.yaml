@@ -1,0 +1,6 @@
+services:
+    - type: web
+      name: anomaly-detection
+      env: python
+      buildCommand: "pip install -r requirements.txt"
+      startCommand: "gunicorn main:app"
