@@ -2,13 +2,13 @@ import joblib
 import pandas as pd
 import tensorflow as tf
 from flask import Flask, render_template
-from flask_bootstrap import Bootstrap5
+from flask_bootstrap import Bootstrap
 
 from forms import Form
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "helloworld"
-bootstrap = Bootstrap5(app)
+bootstrap = Bootstrap(app)
 
 
 @app.route("/", methods=["GET"])
