@@ -8,7 +8,7 @@ body {
 }
 
 .heading-color {
-    color: #bedbbb;
+    color: #bedbbb !important;
 }
 
 .description-color {
@@ -28,16 +28,16 @@ body {
 }
 
 .btn-custom {
-    background-color: #92817a;
-    color: #d1dcd4;
-    border: 2px solid #92817a;
-    transition: all 0.3s ease;
+    background-color: #92817a !important;
+    color: #d1dcd4 !important;
+    border: 2px solid #92817a !important;
+    transition: all 0.3s ease !important;
 }
 
 .btn-custom:hover {
-    background-color: #d1dcd4;
-    color: #92817a;
-    border: 2px solid #92817a;
+    background-color: #d1dcd4 !important;
+    color: #92817a !important;
+    border: 2px solid #92817a !important;
 }
 
 .shadow-sm {
