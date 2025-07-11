@@ -2,6 +2,7 @@ import cloudpickle
 import pandas as pd
 import tensorflow as tf
 from flask import Flask, render_template
+from tensorflow.keras.models import load_model
 
 from forms import Form
 
@@ -18,8 +19,10 @@ def home():
 def check():
     form = Form()
     if form.validate_on_submit():
-        with open("models.pkl", "rb") as f:
-            models = cloudpickle.load(f)
+        with open("pipeline.pkl", "rb") as f:
+            pipeline = cloudpickle.load(f)
+
+        autoencoder_model = load_model("autoencoder.keras")
 
         details = {
             "duration": form.data.duration.data,
@@ -36,16 +39,16 @@ def check():
 
         input_df = pd.DataFrame([details])
 
-        X = models["preprocessor"].transform(input_df)
+        X = pipeline["preprocessor"].transform(input_df)
 
         if form.model.data == "isolation_forest":
-            prediction = models["isolation_forest_model"].predict(X)[0]
+            prediction = pipeline["isolation_forest_model"].predict(X)[0]
             model = "Isolation Forest"
         else:
-            reconstruction = models["autoencoder_model"].predict(X)
+            reconstruction = autoencoder_model.predict(X)
             mse = tf.keras.losses.mse(X, reconstruction).numpy()[0]
 
-            prediction = (mse > models["autoencoder_threshold"]).astype(int)
+            prediction = (mse > pipeline["autoencoder_threshold"]).astype(int)
             model = "Autoencoder"
 
         return render_template("result.html", result=prediction, model_name=model)
