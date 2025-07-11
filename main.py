@@ -1,4 +1,4 @@
-import joblib
+import cloudpickle
 import pandas as pd
 import tensorflow as tf
 from flask import Flask, render_template
@@ -18,7 +18,8 @@ def home():
 def check():
     form = Form()
     if form.validate_on_submit():
-        models = joblib.load("models.joblib")
+        with open("models.pkl", "rb") as f:
+            models = cloudpickle.load(f)
 
         details = {
             "duration": form.data.duration.data,
