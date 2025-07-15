@@ -108,7 +108,7 @@ For example,
 
 ## 🕸️ Demo
 
-The model was deployed on [Render](https://render.com/), with the help of `Flask` backend. But the website is taking a long to load because of the heavy machine learning libraries used. So, here is a demo of the interface:
+The model was deployed on [Render](https://anomaly-detection-9zhq.onrender.com/), with the help of `Flask` backend. But the website is taking a long to load because of the heavy machine learning libraries used. So, here is a demo of the interface:
 
 ![Anomaly Detection Web Interface](demo/gif-demo.gif)
 
